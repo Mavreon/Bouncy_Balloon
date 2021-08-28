@@ -54,6 +54,7 @@ public class PlayerControllerX : MonoBehaviour
             Debug.Log("Game Over!");
             Destroy(other.gameObject);
             GameObject.Find("Main Camera").GetComponent<AudioSource>().Stop(); //Stop playing audio on Main Camera gameObject...
+            Invoke( "QuitGame", 3.0f);
         }
         // if player collides with money, fireworks
         else if (other.gameObject.CompareTag("Money"))
@@ -71,5 +72,10 @@ public class PlayerControllerX : MonoBehaviour
                 playerRb.AddForce(Vector3.up * recoveryForce, ForceMode.Impulse);
             }
         }
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
     }
 }
